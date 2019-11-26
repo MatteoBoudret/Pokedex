@@ -12,7 +12,8 @@
         function recupereMonProfil() {
             var x = new XMLHttpRequest();
             x.open("GET", "https://api.fortnitetracker.com/v1/profile/psn/matteo29123");
-            x.setRequestHeader("TRN-Api-Key", "3ed2f4a0-3b51-4227-bf3b-66405f64e538")
+            x.setRequestHeader("TRN-Api-Key", "3ed2f4a0-3b51-4227-bf3b-66405f64e538");
+            x.setRequestHeader("access-control-allow-origin", "*")
             x.send();
             x.onreadystatechange = function (e) {
                 if (this.readyState == 4 && this.status == 200) {
