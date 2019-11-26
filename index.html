@@ -1,10 +1,28 @@
 <html>
 <header>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>This is title</title>
 </header>
 
-<body>
-    Hello world
+<body onload="recupereMonProfil()">
+    <h1>Mon Profil Fortnite</h1>
+    <p id="contenu"></p>
+
+    <script>
+        function recupereMonProfil() {
+            var x = new XMLHttpRequest();
+            x.open("GET", "https://api.fortnitetracker.com/v1/profile/psn/matteo29123");
+            x.setRequestHeader("TRN-Api-Key", "3ed2f4a0-3b51-4227-bf3b-66405f64e538")
+            x.send();
+            x.onreadystatechange = function (e) {
+                if (this.readyState == 4 && this.status == 200) {
+                    //processResponse(JSON.parse(this.responseText));
+                    document.getElementById("contenu").innerHTML = this.responseText;
+                }
+            }
+        }
+    </script>
+
 </body>
 
 </html>
