@@ -20,7 +20,8 @@
                 <button type="submit" class="btn btn-primary mb-2">Recherche</button>
             </form>
             <p id="contenu" class="mb-4">
-
+                <img id="image-pokemon" class="rounded float-left">
+                <h2 id="nom-pokemon"></h2>
             </p>
         </div>
     </div>
@@ -36,15 +37,18 @@
             x.send();
             x.onreadystatechange = function (e) {
                 if (this.readyState == 4 && this.status == 200) {
-                    affichePokemon(this.responseText)
-                    document.getElementById("contenu").innerHTML = this.responseText;
+                    affichePokemon(JSON.parse(this.responseText))
                 }
             }
         }
 
         function affichePokemon(pokemon) {
-            document.getElementById("contenu").innerHTML = pokemon;
-        }
+            console.log(pokemon)
+            var image = document.getElementById("image-pokemon");
+            image.src = pokemon.sprites.front_default
+            var nom = document.getElementById("nom-pokemon");
+            nom.innerText = pokemon.name
+        }   
     </script>
 
 </body>
